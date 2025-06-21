@@ -1,5 +1,4 @@
-
-# Hi, I'm Amos
+# Hello, I'm Amos.
 
 Welcome to my GitHub profile. Here's a summary of my repository statistics, updated automatically.
 
@@ -7,7 +6,7 @@ Welcome to my GitHub profile. Here's a summary of my repository statistics, upda
 
 ### Repository Stats
 
-My repositories have been cloned **44** times in total.
+My repositories have been cloned **92** times in total (Since June 2025).
 
 ![Clone History](clones_history.png)
 
@@ -15,8 +14,8 @@ My repositories have been cloned **44** times in total.
 
 | Rank | Repository | Total Clones |
 |------|------------|--------------|
-| 1 | [AmosDinh](https://github.com/AmosDinh/AmosDinh) | 44 |
+| 1 | [AmosDinh](https://github.com/AmosDinh/AmosDinh) | 92 |
 
 ---
 
-*Last updated: 2025-06-21 15:22:03 UTC*
+*Last updated: 2025-06-21 15:27:36 UTC*
