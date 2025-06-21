@@ -1,16 +1,22 @@
-## Hi there 👋
 
-<!--
-**AmosDinh/AmosDinh** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# Hi, I'm Amos
 
-Here are some ideas to get you started:
+Welcome to my GitHub profile. Here's a summary of my repository statistics, updated automatically.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+### Repository Stats
+
+My repositories have been cloned **44** times in total.
+
+![Clone History](clones_history.png)
+
+### Top 5 Cloned Repositories
+
+| Rank | Repository | Total Clones |
+|------|------------|--------------|
+| 1 | [AmosDinh](https://github.com/AmosDinh/AmosDinh) | 44 |
+
+---
+
+*Last updated: 2025-06-21 15:22:03 UTC*
