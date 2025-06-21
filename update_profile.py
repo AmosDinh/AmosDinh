@@ -1,73 +1,58 @@
 import os
+import sys
 import pandas as pd
-import matplotlib.pyplot as plt
 from datetime import datetime
 
 # --- 1. DATA GATHERING ---
 
-stats_repo_path = 'repo-stats-data'
+# Correctly define the base path where repository folders are located
+base_search_path = os.path.join('repo-stats-data', 'AmosDinh')
 all_repo_data = []
 
-print(f"Searching for stats in: {os.path.abspath(stats_repo_path)}")
+print(f"Searching for repository data inside: {base_search_path}")
 
-# Walk through the stats directory to find all aggregate CSV files
-for root, dirs, files in os.walk(stats_repo_path):
-    if 'views_clones_aggregate.csv' in files:
-        relative_path = os.path.relpath(root, stats_repo_path)
-        repo_name = relative_path.split(os.sep)[0]
+# Check if the expected directory structure exists
+if not os.path.isdir(base_search_path):
+    print(f"Error: The directory '{base_search_path}' does not exist. Please check the checkout path and repo structure.")
+    sys.exit(1) # Exit with an error
 
-        if repo_name.startswith('.'):
-            continue
-        
-        file_path = os.path.join(root, 'views_clones_aggregate.csv')
-        print(f"Found data file: {file_path} -> Assigning to repo: '{repo_name}'")
-
-        try:
-            df = pd.read_csv(file_path)
-            df['repo'] = repo_name
-            all_repo_data.append(df)
-        except Exception as e:
-            print(f"Could not read {file_path}: {e}")
+# We walk through the directories directly inside 'base_search_path'
+# These directories are the names of your repositories.
+for repo_name in os.listdir(base_search_path):
+    repo_path = os.path.join(base_search_path, repo_name)
+    if os.path.isdir(repo_path):
+        csv_path = os.path.join(repo_path, 'ghrs-data', 'views_clones_aggregate.csv')
+        if os.path.exists(csv_path):
+            print(f"Processing: {csv_path}")
+            try:
+                df = pd.read_csv(csv_path)
+                df['repo'] = repo_name
+                all_repo_data.append(df)
+            except Exception as e:
+                print(f"Could not read or process {csv_path}: {e}")
+        else:
+            print(f"Warning: No aggregate CSV found for repo '{repo_name}'")
 
 if not all_repo_data:
-    print("No data was found. Exiting.")
-    exit()
+    print("No data was found. README will not be updated.")
+    sys.exit()
+
+# --- 2. DATA AGGREGATION ---
 
 full_df = pd.concat(all_repo_data, ignore_index=True)
 full_df['time_iso8601'] = pd.to_datetime(full_df['time_iso8601'])
 
-# --- 2. DATA AGGREGATION ---
+# Get the earliest date from the data to display in the title
+min_date = full_df['time_iso8601'].min()
+start_date_str = min_date.strftime("%B %Y") # e.g., "June 2025"
 
-total_clones = full_df['clones_total'].sum()
-top_5_repos = full_df.groupby('repo')['clones_total'].sum().nlargest(5).reset_index()
-clones_over_time = full_df.groupby(pd.Grouper(key='time_iso8601', freq='D'))['clones_total'].sum().reset_index()
-clones_over_time = clones_over_time.sort_values('time_iso8601')
+# --- Aggregate using 'clones_unique' as requested ---
+total_unique_clones = full_df['clones_unique'].sum()
+top_5_repos = full_df.groupby('repo')['clones_unique'].sum().nlargest(5).reset_index()
 
+# --- 3. README.md GENERATION ---
 
-# --- 3. PLOT GENERATION ---
-
-plt.style.use('dark_background')
-# --- CHANGE HERE: Changed figsize from (10, 5) to (10, 3) for a shorter graph ---
-fig, ax = plt.subplots(figsize=(10, 3))
-
-ax.plot(clones_over_time['time_iso8601'], clones_over_time['clones_total'], color='#4F9FEF', linewidth=2)
-ax.fill_between(clones_over_time['time_iso8601'], clones_over_time['clones_total'], color='#4F9FEF', alpha=0.3)
-
-ax.set_title('Total Repository Clones Over Time', fontsize=16, color='white')
-ax.set_xlabel('Date', fontsize=12, color='white')
-ax.set_ylabel('Number of Clones', fontsize=12, color='white')
-ax.grid(axis='y', linestyle='--', alpha=0.3)
-ax.tick_params(axis='x', colors='white')
-ax.tick_params(axis='y', colors='white')
-plt.setp(ax.spines.values(), color='white')
-
-plt.savefig('clones_history.png', bbox_inches='tight', transparent=True)
-print("Graph 'clones_history.png' created with smaller height.")
-
-
-# --- 4. README.md GENERATION ---
-
-readme_content = f"""# Hello, I'm Amos.
+readme_content = f"""# Hello, my name is Amos. 
 
 Welcome to my GitHub profile. Here's a summary of my repository statistics, updated automatically.
 
@@ -75,18 +60,17 @@ Welcome to my GitHub profile. Here's a summary of my repository statistics, upda
 
 ### Repository Stats
 
-My repositories have been cloned **{int(total_clones)}** times in total (Since June 2025).
-
-![Clone History](clones_history.png)
+My repositories have been cloned a total of **{int(total_unique_clones)}** unique times (since {start_date_str}).
 
 ### Top 5 Cloned Repositories
 
-| Rank | Repository | Total Clones |
-|------|------------|--------------|
+| Rank | Repository | Unique Clones |
+|------|------------|---------------|
 """
 
 for index, row in top_5_repos.iterrows():
-    readme_content += f"| {index + 1} | [{row['repo']}](https://github.com/AmosDinh/{row['repo']}) | {int(row['clones_total'])} |\n"
+    # The column name is now 'clones_unique'
+    readme_content += f"| {index + 1} | [{row['repo']}](https://github.com/AmosDinh/{row['repo']}) | {int(row['clones_unique'])} |\n"
 
 last_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC")
 readme_content += f"\n---\n\n*Last updated: {last_updated}*"
@@ -94,4 +78,4 @@ readme_content += f"\n---\n\n*Last updated: {last_updated}*"
 with open('README.md', 'w') as f:
     f.write(readme_content)
 
-print("README.md has been updated.")
+print("README.md has been updated successfully.")
