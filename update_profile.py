@@ -43,13 +43,13 @@ start_date_str = min_date.strftime("%B %Y")
 
 total_unique_clones = full_df['clones_unique'].sum()
 
-# --- CHANGE HERE: Get top 10 repos instead of top 5 ---
+# Get top 10 repos
 top_10_repos = full_df.groupby('repo')['clones_unique'].sum().nlargest(10).reset_index()
 
 
 # --- 3. README.md GENERATION ---
 
-readme_content = f"""# Hello there, I am Amos. 
+readme_content = f"""# Hello there, I am Amos.
 
 Welcome to my GitHub profile. Here's a summary of my repository statistics, updated automatically.
 
@@ -59,14 +59,13 @@ Welcome to my GitHub profile. Here's a summary of my repository statistics, upda
 
 My repositories have been cloned a total of **{int(total_unique_clones)}** unique times (since {start_date_str}).
 
-{/* --- CHANGE HERE: Updated title and table header --- */}
 ### Top 10 Cloned Repositories
 
 | Repository | Unique Clones |
 |------------|---------------|
 """
 
-# --- CHANGE HERE: Loop to generate table rows without the Rank column ---
+# Loop to generate table rows without the Rank column
 for index, row in top_10_repos.iterrows():
     readme_content += f"| [{row['repo']}](https://github.com/AmosDinh/{row['repo']}) | {int(row['clones_unique'])} |\n"
 
