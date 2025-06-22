@@ -6,14 +6,14 @@ Welcome to my GitHub profile. Here's a summary of my repository statistics, upda
 
 ### Repository Stats
 
-My repositories have been cloned a total of **108** unique times (since June 2025).
+My repositories have been cloned a total of **115** unique times (since June 2025).
 
 ### Top 10 Cloned Repositories
 
 | Repository | Unique Clones |
 |------------|---------------|
-| [markdown2png](https://github.com/AmosDinh/markdown2png) | 30 |
-| [GoogleAiStudio_SetSystemInstructionsAutomatically](https://github.com/AmosDinh/GoogleAiStudio_SetSystemInstructionsAutomatically) | 17 |
+| [markdown2png](https://github.com/AmosDinh/markdown2png) | 36 |
+| [GoogleAiStudio_SetSystemInstructionsAutomatically](https://github.com/AmosDinh/GoogleAiStudio_SetSystemInstructionsAutomatically) | 18 |
 | [IceCreamEmpire_S4](https://github.com/AmosDinh/IceCreamEmpire_S4) | 6 |
 | [Reinforce_TrainReScheduling](https://github.com/AmosDinh/Reinforce_TrainReScheduling) | 5 |
 | [Generative_Clothes2Person](https://github.com/AmosDinh/Generative_Clothes2Person) | 4 |
@@ -25,4 +25,4 @@ My repositories have been cloned a total of **108** unique times (since June 202
 
 ---
 
-*Last updated: 2025-06-21 15:40:48 UTC*
+*Last updated: 2025-06-22 20:26:16 UTC*
