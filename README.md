@@ -6,23 +6,23 @@ Welcome to my GitHub profile. Here's a summary of my repository statistics, upda
 
 ### Repository Stats
 
-My repositories have been cloned a total of **489** unique times (since June 2025).
+My repositories have been cloned a total of **994** unique times (since June 2025).
 
 ### Top 10 Cloned Repositories
 
 | Repository | Unique Clones |
 |------------|---------------|
-| [markdown2png](https://github.com/AmosDinh/markdown2png) | 42 |
-| [GoogleAiStudio_SetSystemInstructionsAutomatically](https://github.com/AmosDinh/GoogleAiStudio_SetSystemInstructionsAutomatically) | 35 |
-| [snake](https://github.com/AmosDinh/snake) | 31 |
-| [pytorch_geometric](https://github.com/AmosDinh/pytorch_geometric) | 29 |
-| [CryptoExchange_DataCollector_](https://github.com/AmosDinh/CryptoExchange_DataCollector_) | 28 |
-| [googleSearcher](https://github.com/AmosDinh/googleSearcher) | 28 |
-| [diffusers](https://github.com/AmosDinh/diffusers) | 27 |
-| [langchain](https://github.com/AmosDinh/langchain) | 27 |
-| [FileSaver.js](https://github.com/AmosDinh/FileSaver.js) | 26 |
-| [L1B3RT45](https://github.com/AmosDinh/L1B3RT45) | 26 |
+| [bachelorthesis_security-research-graph-learning](https://github.com/AmosDinh/bachelorthesis_security-research-graph-learning) | 44 |
+| [markdown2png](https://github.com/AmosDinh/markdown2png) | 44 |
+| [ov7670_VGA_color_SD_card_timelapse](https://github.com/AmosDinh/ov7670_VGA_color_SD_card_timelapse) | 43 |
+| [tictactoAlgo](https://github.com/AmosDinh/tictactoAlgo) | 43 |
+| [node_fontviewer](https://github.com/AmosDinh/node_fontviewer) | 42 |
+| [Bot-or-User_Twitter-Classification](https://github.com/AmosDinh/Bot-or-User_Twitter-Classification) | 38 |
+| [GoogleAiStudio_SetSystemInstructionsAutomatically](https://github.com/AmosDinh/GoogleAiStudio_SetSystemInstructionsAutomatically) | 36 |
+| [flvToMP4.py](https://github.com/AmosDinh/flvToMP4.py) | 36 |
+| [StableCascadeInference](https://github.com/AmosDinh/StableCascadeInference) | 34 |
+| [StableDiffusion_Chairs](https://github.com/AmosDinh/StableDiffusion_Chairs) | 34 |
 
 ---
 
-*Last updated: 2025-07-20 20:28:34 UTC*
+*Last updated: 2025-07-27 20:28:58 UTC*
